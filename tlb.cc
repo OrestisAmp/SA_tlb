@@ -86,8 +86,8 @@ TLB::TLB(const Params *p)
            }
      }
 
-
-
+//Created my debug flag Miss
+	      
     DPRINTF(Miss,"size is %#x.\n", size);
     DPRINTF(Miss,"assoc is %#x.\n", assoc);
 
