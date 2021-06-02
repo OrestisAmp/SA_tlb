@@ -65,7 +65,6 @@ TLB::TLB(const Params *p)
       tlb(size), lruSeq(0)
 
 
-// m5opRange(p->system->m5opRange()), stats(this)
 {
     if (!size)
         fatal("TLBs must have a non-zero size.\n");
@@ -77,7 +76,7 @@ TLB::TLB(const Params *p)
     freeList.resize(numSets); //now the freelist has one EntryList for each set.
 
 
- //like in the gpu_tlb implementation 
+ //exactly like in the gpu_tlb implementation 
 
      for (int set = 0; set < numSets; ++set) {
            for (int way = 0; way < assoc; ++way) {
@@ -117,6 +116,7 @@ TLB::printSet(int set)
 //called during insert/demap to maintain lru ordering with the help of lruSeq. when we insert an entry gets at the top
 //of the LRU so every other entry is decremented. When we demap, the entry is always on top so every other entry gets  
 //incremented
+	
 void
 TLB::updateLRU(int set, bool in)
 {
